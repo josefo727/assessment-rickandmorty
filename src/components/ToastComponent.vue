@@ -23,7 +23,7 @@ export default {
           this.$bvToast.toast(this.toast.message, {
             title: this.toast.variant,
             variant: this.toast.variant,
-            autoHideDelay: 500000,
+            autoHideDelay: 5000,
             toaster: 'b-toaster-top-right',
             solid: true,
             appendToast: false
