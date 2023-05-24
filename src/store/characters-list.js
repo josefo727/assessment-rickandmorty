@@ -10,6 +10,9 @@ export default {
     SET_CHARACTERS(state, payload) {
       state.characters = [...state.characters, ...payload];
     },
+    CLEAR_CHARACTERS(state) {
+      state.characters = [];
+    },
     SET_PAGE(state, payload) {
       state.page = payload;
     }
@@ -20,7 +23,7 @@ export default {
       commit('SET_LOADING', true, { root: true });
       const api = new ApiService(rootState.urlBase);
       const route = `/character?page=${state.page}`;
-      api.get(route).then(response => {
+      await api.get(route).then(response => {
         if (response.success) {
           commit('SET_CHARACTERS', response.data.results);
           const nextUrl = response.data.info.next;

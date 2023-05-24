@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex';
+import { mapActions, mapGetters, mapMutations } from 'vuex';
 import CharacterDetails from '@/components/CharacterDetails';
 
 export default {
@@ -18,6 +18,7 @@ export default {
     CharacterDetails
   },
   created() {
+    this.SET_ERROR(null);
     this.fetchCharacters();
   },
   computed: {
@@ -27,6 +28,7 @@ export default {
   },
   methods: {
     ...mapActions('charactersDetails', ['fetchCharacters']),
+    ...mapMutations(['SET_ERROR']),
   }
 }
 </script>

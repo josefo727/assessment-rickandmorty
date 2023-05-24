@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex';
+import { mapActions, mapGetters, mapMutations } from 'vuex';
 import CharacterComponent from '@/components/CharacterComponent';
 
 export default {
@@ -18,7 +18,8 @@ export default {
     CharacterComponent
   },
   created() {
-    this.fetchCharacters();
+    this.SET_ERROR(null);
+    if (this.characters.length === 0) this.fetchCharacters();
   },
   mounted() {
     window.addEventListener('scroll', this.onScroll);
@@ -37,6 +38,7 @@ export default {
   },
   methods: {
     ...mapActions('charactersList', ['fetchCharacters']),
+    ...mapMutations(['SET_ERROR']),
     loadMore() {
       if (!this.isLoading) {
         this.fetchCharacters();
