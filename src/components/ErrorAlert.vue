@@ -1,5 +1,5 @@
 <template>
-  <b-container>
+  <b-container class="custom-container">
     <div class="m-3">
       <b-alert :show="show" variant="danger">
         {{ error }}
@@ -23,3 +23,9 @@
     },
   }
 </script>
+
+<style scoped>
+.custom-container {
+  max-width: 70%;
+}
+</style>
